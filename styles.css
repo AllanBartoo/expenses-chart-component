@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Primary */
+  --soft-red: hsl(10, 79%, 65%);
+  --cyan: hsl(186, 34%, 60%);
+
+  /* Neutral */
+  --dark-brown: hsl(25, 47%, 15%);
+  --medium-brown: hsl(28, 10%, 53%);
+  --cream: hsl(27, 66%, 92%);
+  --very-pale-orange: hsl(33, 100%, 98%);
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.125rem;
+  height: 100vh;
+  background-color: var(--cream);
+  display: grid;
+  place-items: center;
+}
+
+/* global variables */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-left p {
+  font-size: 1rem;
+  margin-bottom: 3px;
+}
+
+.container-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-right span {
+  align-self: flex-end;
+}
+
+main {
+  padding: 10px;
+  width: 90%;
+  max-width: 400px; 
+}
+
+
+header {
+  background-color: var(--soft-red);
+  color: var(--very-pale-orange);
+}
+
+header,
+section {
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+header span,
+.total span {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+h1 {
+  color: var(--dark-brown);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+/* chart */
+.chart {
+  background-color: var(--very-pale-orange);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* bar chart */
+.chart-container {
+  height: 200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.chart-container .chart-bar {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  text-align: center;
+  position: relative;
+  align-items: center;
+}
+
+.chart-container .chart-bar .bar {
+  width: 100%;
+  background-color: var(--soft-red);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: height 0.3s ease;
+}
+
+.chart-container .chart-bar p {
+  font-size: 0.9rem;
+  color: var(--medium-brown);
+  text-transform: lowercase;
+}
+
+.chart-container .chart-bar .bar:hover {
+  opacity: 0.8;
+}
+
+.chart-container .chart-bar .bar.click {
+  background-color: var(--cyan);
+}
+
+hr {
+  margin: 10px 0;
+  opacity: 0.3;
+}
+
+.total p,
+.month p {
+  font-size: 1rem;
+  color: var(--medium-brown);
+  font-weight: 400;
+}
+
+.total span,
+.month span {
+  font-weight: 700;
+  color: var(--dark-brown);
+}
+
+.total span {
+  font-size: 2rem;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: var(--dark-brown);
+  color: var(--very-pale-orange);
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  bottom: 100%;
+  margin-bottom: 5px;
+  transition: opacity 0.3s ease;
+}
+
+.chart-container .chart-bar:hover .tooltip {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .chart-container {
+    gap: 5px; /* Reduce gaps */
+  }
+
+  .chart-container .chart-bar {
+    gap: 5px; /* Adjust spacing between bars */
+  }
+
+  .chart-container .chart-bar p {
+    font-size: 0.8rem; /* Smaller labels */
+  }
+}
