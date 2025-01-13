@@ -10,10 +10,14 @@ fetch("data.json")
   })
   .then((data) => {
     data.forEach((item) => {
+      const maxAmount = Math.max(...data.map((item) => item.amount));
+
       html += `
         <div class="chart-bar">
           <p>${item.day}</p>
-          <div class="bar" style="height: ${item.amount}%;"></div>
+          <div class="bar" style="height: ${
+            (item.amount / maxAmount) * 100
+          }%;"></div>
           <div class="tooltip" style="opacity: 0;">$${item.amount}</div>
         </div>
       `;
